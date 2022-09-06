@@ -64,24 +64,24 @@
 // Ejercicio 27
 function numerosPrimos(numero) 
 {
-    var numero = parseFloat(prompt('Ingrese un numero:'))
-    if (numero<=2) {
-        return ('El numero debe ser mayor a 2')
-    }
-    for (var i = 2; i <= numero-1; i++)
-        if (numero % i == 0) {
-            return ('No es numero primo')
-        }
-    return ('Es numero primo')
+   var numero = parseFloat(prompt('Ingrese un numero:'))
+   if (numero<=2) {
+       return ('El numero debe ser mayor a 2')
+   }
+   for (var i = 2; i <= numero-1; i++)
+       if (numero % i == 0) {
+           return ('No es numero primo')
+       }
+   return ('Es numero primo')
 }
 console.log(numerosPrimos())
 
 // Ejercicio 36
-//console.log('*',' ',' ',' ',' ',' ',' ',' ',' ')
-//console.log('*','*','*',' ',' ',' ',' ',' ',' ')
-//console.log('*','*','*','*','*',' ',' ',' ',' ')
-//console.log('*','*','*','*','*','*','*',' ',' ')
-//console.log('*','*','*','*','*','*','*','*','*')
+// document.write('Hola mundo')
+// document.write('<h1>Hola mundo</h1>')  // Negrilla
+//document.write('Hola  <br> mundo')     // Salto de línea
+document.write(`* <br> *** <br> ***** <br> ******* <br> *********`)
+
 
 // Ejercicio 45
 //function elementosArray() {
@@ -93,7 +93,6 @@ console.log(numerosPrimos())
 //}
 //elementosArray()
 
-// Ejercicio 54
 //Ejercicio 54
 //var arregloString= function(){
 //	var arreglo=["Luis", "Mangos", 25, "peras", "Manizales"]

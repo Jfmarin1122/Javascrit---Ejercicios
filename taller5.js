@@ -43,9 +43,15 @@ function ColaFila() {
       }
 
 //Ejercicio 1
+// fillQueue = (size) => {
+//     for (let i = 0; i < size; i++) {
+//     const data = prompt('Ingresa el dato número ' + (i + 1))
+//     this.encolar(data)
+//     }   
+// }
     this.encolarNumElementos = function(){
         let numElementos = parseFloat(prompt('Ingrese la cantidad de elementos:'))
-        for(let i = 1; i <= numElementos; i++){
+        for(let i = 0; i <= numElementos; i++){
             this.elementos[this.final] = i
             this.final ++
         }       
@@ -82,9 +88,8 @@ function ColaFila() {
 //Ejercicio 4
     this.devolverNumPares= function(){
         pares=[]
-        for(let contador = this.primero; contador < this.final; contador++){
-            const info = this.elementos[this.primero]
-            this.primero++
+        for(let contador = this.primero; contador <= this.final; contador++){
+            const info = this.elementos[contador]
             if(info % 2 == 0) {
                 pares.push(info)
             }
@@ -93,17 +98,18 @@ function ColaFila() {
     }
 
 // Ejercicio 5
-    this.impares = function(){
-        let longitud =this.final-this.primero
-        let arreglo_impares=[]
-        for (var i = 0 ; i < longitud; i++) {
-        if (this.elementos[i] % 2 != 0) {
-            arreglo_impares.push(this.elementos[i])
+    this.devolverNumImpares = function(){
+        impares = []
+        for(let contador = this.primero; contador < this.final; contador++){
+            const info = this.elementos[contador]
+            if(info % 2 != 0) {
+                
+                impares.push(info)
+            }
         }
-        }
-        console.log("los numeros impares son: ", arreglo_impares)
+        return impares
     }
-
+    
 //Ejercicio 6
     this.devolverStrings = () => {
         strings = []
@@ -119,29 +125,23 @@ function ColaFila() {
     }
 
 // Ejercicio 7
-    this.tipoDato = () => {
-        let cantString = 0
-        let cantInt = 0
-        let cantArray = 0
-        let i = 0
-        while (i <= this.final - this.primero) {
-            if (typeof this.elementos[i] == 'string') {
-                cantString ++    
-            }
-            if (typeof this.elementos[i] == 'number') {
-                cantInt ++
-            }
-            if (Array.isArray(this.elementos[i])) {
-                cantArray ++
-            }
-            i++
-            }   
+    countTypes = () => {
+        let countString = 0
+        let countNumber = 0
+        let countArray = 0
+        for (let i = this.primero; i < this.final; i++) {
+            const info = this.elementos[i]
+
+            if (typeof info === 'string') countString++
+            else if (typeof info === 'number') countNumber++
+            else if(Array.isArray(info)) countArray++
         }
-        let respuesta = 'Lista: \n' + 'Cantidad de strings:' + cantString + '\n'
-                                    + 'Cantidad de enteros:' + cantInt + '\n'
-                                    + 'Cantidad de Array:' + cantArray + '\n'
-        console.log(respuesta)
-        //return this.elementos
+        return ({
+            string: countString,
+            number: countNumber,
+            array: countArray
+        })
+    }
 
 // Ejercicio 8 
     this.eliminarDato=(dato)=>{
@@ -160,7 +160,29 @@ function ColaFila() {
     }
 
 // Ejercicio 9
-
+    this.eliminarPorPosicion = (position) =>{
+        if(this.esta_vacia()){
+        return ('La fila esta vacia')
+        }
+        if (position === this.primero) {
+        this.desencolar()
+        return ("Se ha elimiado el primer elemento", this.imprimir())
+        } else {
+        for (i = this.primero; i <= this.final; i++) {
+            if (position === i) {
+            delete this.elementos[i]
+            let j = position
+            while (j<this.final) {   
+                j++
+                this.elementos[j-1] = this.elementos[j]
+                this.final--
+            }
+            return this.imprimir()
+            }
+        }
+        return (`No se ha encontrado ningun elemento en la fila con la siguiente posicion: ${position}`)
+        }
+    }
 
 //Ejercicio 10 
     this.eliminarDatosHastaPosicion=function(posicion){
@@ -185,6 +207,6 @@ console.log("Los elementos son: ", fila1.imprimir())
 console.log("La secuencia Par Impar esta: ", fila1.secuParImpar())
 console.log("Los numeros pares del arreglo son:", fila1.devolverNumPares())
 fila1.sumar()
-console.log("Los numeros impares del arreglo son:", fila1.Impares())
+console.log("Los numeros impares del arreglo son:", fila1.devolverNumImpares())
 
 

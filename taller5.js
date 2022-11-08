@@ -103,7 +103,6 @@ function ColaFila() {
         for(let contador = this.primero; contador < this.final; contador++){
             const info = this.elementos[contador]
             if(info % 2 != 0) {
-                
                 impares.push(info)
             }
         }
@@ -199,6 +198,40 @@ function ColaFila() {
         return this.elementos    
     }   
 }
+
+    // this.tipoDatos=function(){
+    //     let longitud=this.final-this.primero
+    //     for (var i = 0; i < longitud; i++) {
+    //         tipoDatos.push(typeof this.elementos[i])
+    //     }
+    //     this.eliminarDuplicados()
+    // }
+
+    // this.eliminarDuplicados=function(){
+    //     const result = [];
+    //     tipoDatos.forEach((item)=>{
+    //         if(!result.includes(item)){
+    //             result.push(item);
+    //         }
+    //     })
+    //     this.conteDatos(result)
+
+    // }
+
+    // this.conteDatos=function(){
+    //     tipoDatos.forEach((i) => {
+    //     var tipoDatos=(i)
+    //     var count=0
+    //     let longitud=this.final-this.primero
+    //     for (var i = 0; i < longitud; i++) {
+    //         if(typeof this.elementos[i] == tipoDatos){
+    //             count++;
+    //         }
+    //     }
+    //     console.log("cantidad de datos de tipo:"+tipoDatos+"="+count)
+    //     })
+
+    // }
 
 const fila1 = new ColaFila()
 fila1.encolarNumElementos()
